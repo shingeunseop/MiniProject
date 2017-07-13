@@ -35,8 +35,9 @@ public class Profile {
 	public void setCompany(String company) {
 		this.company = company;
 	}
-	
-	
+	public void showInfo(int k) {
+		System.out.println(k + 1 + ". " +name + "      "+ hp + "   " + company);
+	}
 	
 	
 

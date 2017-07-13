@@ -50,9 +50,9 @@ public class MiniPro {
 			case 1:
 				System.out.println("<1.리스트>");
 				for (int k = 0; k < profilelist.size(); k++) {
-					System.out.println(k + 1 + ". " + profilelist.get(k).getName() + "      "
-							+ profilelist.get(k).getHp() + "   " + profilelist.get(k).getCompany());
+					profilelist.get(k).showInfo(k);
 				}
+								
 				break;
 			case 2:
 				System.out.println("<2.등록>");
@@ -89,16 +89,29 @@ public class MiniPro {
 				break;
 			case 4:
 				System.out.println("<4.검색>");
+				System.out.println(">이름:");
+				String search=sc.next();
+				
+				for(int k=0;k<profilelist.size();k++) {
+				String[] word=profilelist.get(k).getName().split("");
+				
+				for(int u=0;u<word.length;u++) {
+				if(search==word[u])
+					profilelist.get(k).showInfo(k);}
+				}
 				break;
 			case 5:
 				System.out.println("*************************************");
 				System.out.println("*            감사합니다.              *");
 				System.out.println("*************************************");
 				break;
+				
 			default:
 				System.out.println("다시 입력해주세요");
 				continue;
 			}
+			if(i==5)
+				break;
 
 		}
 
