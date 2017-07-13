@@ -92,12 +92,12 @@ public class MiniPro {
 				System.out.println(">이름:");
 				String search=sc.next();
 				
-				for(int k=0;k<profilelist.size();k++) {
-				String[] word=profilelist.get(k).getName().split("");
+				for(int j=0;j<profilelist.size();j++) {
+				String[] word=profilelist.get(j).getName().split("");
 				
-				for(int u=0;u<word.length;u++) {
-				if(search==word[u])
-					profilelist.get(k).showInfo(k);}
+				for(int k=0;k<word.length;k++) {
+				if(search==word[k])
+					profilelist.get(j).showInfo(j);}
 				}
 				break;
 			case 5:
