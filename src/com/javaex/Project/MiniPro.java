@@ -1,80 +1,106 @@
 package com.javaex.Project;
 
+import java.awt.List;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
 import java.io.Reader;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class MiniPro {
 
 	public static void main(String[] args) throws IOException {
-		Scanner sc=new Scanner(System.in);
+		Scanner sc = new Scanner(System.in);
 		System.out.println("*************************************");
 		System.out.println("*          전화번호 관리 프로그램                 *");
 		System.out.println("*************************************");
 		System.out.println("1.리스트  2.등록  3.삭제  4.검색  5.종료");
 		System.out.println("--------------------------------------");
-		
-		Reader r=new FileReader("D:\\javaStudy\\파일\\phoneDB.txt");
-		BufferedReader br=new BufferedReader(r);
-		
-		
+
+		Reader r = new FileReader("D:\\javaStudy\\file\\phoneDB.txt");
+		BufferedReader br = new BufferedReader(r);
+
 		String str;
-		Profile[] profile=new Profile[5];
-		while(true) {
-		str=br.readLine();
-		
-		if(str==null) {
-			break;
-		}
-		
-		String Part[]=str.split(",");
-		
-		int j=0;
-		profile [j].setName(Part[0]);
-		profile [j].setHp(Part[1]);
-		profile [j].setCompany(Part[2]);
-		j++;
-				
-		}
-		
-		while(true) {		
-		System.out.print(">>메뉴번호:");
-		
-		int i=sc.nextInt();
-		
-		switch(i) {
-		case 1:
-			System.out.println("<1.리스트>");
-			for(int k=0;k<profile.length;k++) {
-				System.out.println(k+1+". "+profile[k].getName()+"      "
-			+profile[k].getHp()+"   "
-						+profile[k].getCompany());
+		ArrayList<Profile> profilelist = new ArrayList<Profile>();
+
+		while (true) {
+			str = br.readLine();
+
+			if (str == null) {
+				break;
 			}
-			break;
-		case 2:
-			break;
-		case 3:
-			break;
-		case 4:
-			break;
-		case 5:
-			break;
+
+			String Part[] = str.split(",");
+
+			Profile profile = new Profile();
+			profile.setName(Part[0]);
+			profile.setHp(Part[1]);
+			profile.setCompany(Part[2]);
+			profilelist.add(profile);
+
+		}
+
+		while (true) {
+			System.out.print(">>메뉴번호:");
+
+			int i = sc.nextInt();
+
+			switch (i) {
+			case 1:
+				System.out.println("<1.리스트>");
+				for (int k = 0; k < profilelist.size(); k++) {
+					System.out.println(k + 1 + ". " + profilelist.get(k).getName() + "      "
+							+ profilelist.get(k).getHp() + "   " + profilelist.get(k).getCompany());
+				}
+				break;
+			case 2:
+				System.out.println("<2.등록>");
+				System.out.println("");
+
+				System.out.println(">이름:");
+				String plus = sc.next();
+				System.out.println("");
+
+				System.out.println(">휴대전화:");
+				String plus2 = sc.next();
+				
+
+				System.out.println(">집전화:");
+				String plus3 = sc.next();
+
+				System.out.println("");
+				
+				Profile addfile = new Profile();
+				
+				addfile.setName(plus);
+				addfile.setHp(plus2);
+				addfile.setCompany(plus3);
+				profilelist.add(addfile);
+
+				System.out.println("[등록되었습니다.]");
+				break;
+			case 3:
+				System.out.println("<3.삭제>");
+				System.out.println(">번호:");
+				int num = sc.nextInt();
+				profilelist.remove(num-1);
+				System.out.println("[삭제되었습니다.]");
+				break;
+			case 4:
+				System.out.println("<4.검색>");
+				break;
+			case 5:
+				System.out.println("*************************************");
+				System.out.println("*            감사합니다.              *");
+				System.out.println("*************************************");
+				break;
 			default:
 				System.out.println("다시 입력해주세요");
 				continue;
+			}
+
 		}
-		
-		}
-		
-		
-		
-		
-	
-		
 
 	}
 
