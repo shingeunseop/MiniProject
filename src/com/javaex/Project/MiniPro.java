@@ -22,9 +22,7 @@ public class MiniPro {
 		Reader r = new FileReader("D:\\javaStudy\\file\\phoneDB.txt");
 
 		BufferedReader br = new BufferedReader(r);
-
 		ArrayList<Profile> profilelist = new ArrayList<Profile>();
-
 		String str;
 
 		while (true) {
