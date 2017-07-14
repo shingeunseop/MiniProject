@@ -38,7 +38,10 @@ public class Profile {
 	public void showInfo(int k) {
 		System.out.println(k + 1 + ". " +name + "      "+ hp + "   " + company);
 	}
-	
+	public String show() {
+		String newstr=name+","+hp+","+company+"\n";
+		return newstr;
+	}
 	
 
 }
