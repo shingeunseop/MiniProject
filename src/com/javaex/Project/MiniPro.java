@@ -1,8 +1,9 @@
 package com.javaex.Project;
 
-import java.awt.List;
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.io.Reader;
 import java.util.ArrayList;
@@ -77,6 +78,12 @@ public class MiniPro {
 				addfile.setHp(plus2);
 				addfile.setCompany(plus3);
 				profilelist.add(addfile);
+				
+				BufferedWriter bufferedWriter=new BufferedWriter(new FileWriter("D:\\javaStudy\\file\\phoneDB.txt",true));
+				bufferedWriter.write(plus);
+				bufferedWriter.write(","+plus2);
+				bufferedWriter.write(","+plus3);
+				bufferedWriter.close();
 
 				System.out.println("[등록되었습니다.]");
 				break;
@@ -86,19 +93,24 @@ public class MiniPro {
 				int num = sc.nextInt();
 				profilelist.remove(num-1);
 				System.out.println("[삭제되었습니다.]");
+				BufferedWriter bufferedWriter1=new BufferedWriter(new FileWriter("D:\\javaStudy\\file\\phoneDB.txt",true));
+				bufferedWriter1.write(profilelist.get(0));
+				
+				
+				//제거후 파일을 저장...
 				break;
 			case 4:
 				System.out.println("<4.검색>");
 				System.out.println(">이름:");
 				String search=sc.next();
-				
-				for(int j=0;j<profilelist.size();j++) {
-				String[] word=profilelist.get(j).getName().split("");
-				
-				for(int k=0;k<word.length;k++) {
-				if(search==word[k])
-					profilelist.get(j).showInfo(j);}
+				for(int k=0;k<profilelist.size();k++) {
+					if(profilelist.get(k).getName().contains(search))
+						profilelist.get(k).showInfo(k);
 				}
+				
+				
+				
+				
 				break;
 			case 5:
 				System.out.println("*************************************");
